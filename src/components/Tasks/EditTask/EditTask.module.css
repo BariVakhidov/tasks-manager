@@ -1,0 +1,157 @@
+.editTask{
+    float: right;
+    right: 0;
+    top:65px;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    width: 975px;
+    background-color: #ecf3f7;
+    position: fixed;
+    align-self: flex-end;
+    height: 100%;
+}
+.editTaskHead {
+    min-height: 60px;
+    padding: 0 38px;
+    color: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a4876;
+}
+.close {
+    cursor: pointer;
+}
+.description {
+    padding: 50px 15px 50px 38px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px #dae0e7 solid;
+}
+.editTaskCont {
+    display: flex;
+}
+.form {
+    padding-top: 50px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #9f9ea7;
+    font-weight: 300;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.description span {
+    margin-bottom: 15px;
+    color: #9f9ea7;
+
+}
+.form textarea {
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.form button {
+    margin: 55px 0 55px;
+}
+.newComment {
+    resize: none;
+    width: 620px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: #f9f9fa;
+    border: 1px solid #e8e8e8;
+}
+.flexCont {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.info {
+    margin-top: 20px;
+}
+.info span {
+    margin-bottom: 10px;
+    color: #9f9ea7;
+}
+.error {
+    margin-left: 5px;
+    margin-bottom: 20px;
+    color: red;
+    font-size: 13px;
+}
+
+.status {
+    margin: 30px 0 30px 30px;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+.status:hover {
+    cursor: pointer;
+    background-color: #008cf0;
+}
+.statusEdit {
+    margin-top: -25px;
+    background-color: #dbebee;
+    position: absolute;
+}
+.dot {
+    height: 11px;
+    width: 11px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+.tag {
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #9da1aa;
+    padding: 3px;
+    color: #9da1aa;
+    margin: 5px;
+}
+.tags {
+    display: flex;
+}
+.executor {
+    margin: 5px 0;
+    color: #008cf0;
+}
+.executor:hover {
+    cursor: pointer;
+    color: #002c49;
+}
+.executorEdit {
+    margin: -25px 30px 0 30px;
+    text-align: center;
+    padding: 5px;
+    background-color: #dbebee;
+    position: absolute;
+}
+.comment {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 40px;
+}
+.commentHead {
+    display: flex;
+    margin-bottom: 10px;
+}
+.commentInfo {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.commentText {
+    margin-left: 70px;
+    padding: 10px;
+    border-radius: 5px;
+    filter: drop-shadow(0 0 1.5px rgba(0,0,0,0.2));
+    background-color: #e3e9f4;
+}

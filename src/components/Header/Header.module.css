@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    align-items: center;
+    height: 65px;
+    background-color: #d1e0ed;
+    position: sticky;
+    top: 0;
+}
+.search {
+    padding: 5px 45px 5px 20px;
+    margin-left: 20px;
+    width: 680px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    border: 1px solid #42aaff;
+    outline: none;
+    background-image: url("../../assets/images/search.png");
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 98%;
+}
