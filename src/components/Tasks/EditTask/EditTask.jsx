@@ -29,8 +29,9 @@ const EditTask = ({setStatus, statuses, setExecutor, setEditMode, users, task, s
                                 }
                                 return errors;
                             }}
-                            onSubmit={(values, {setSubmitting, setFieldValue}) => {
+                            onSubmit={(values, {setSubmitting, setFieldValue, setFieldTouched}) => {
                                 addComment({...data, ...values}, task.id);
+                                setFieldTouched("comment", false)
                                 setFieldValue("comment","");
                                 setSubmitting(false);
                             }}
