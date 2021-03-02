@@ -7,7 +7,7 @@ import {
     initializeTasks, requestTask, save,
     setEditableTask,
     setEditMode,
-    setExecutor, setStatus
+    setExecutor, setNewTaskMode, setStatus
 } from "../../redux/tasks-reducer";
 import Preloader from "../Preloader/Preloader";
 
@@ -31,7 +31,8 @@ let mapStateToProps = (state) => {
         editMode: state.tasks.editMode,
         users: state.tasks.users,
         statuses: state.tasks.statuses,
-        priorities: state.tasks.priorities
+        priorities: state.tasks.priorities,
+        newTaskMode: state.tasks.newTaskMode
     }
 }
 
@@ -43,6 +44,7 @@ export default connect(mapStateToProps, {
     initializeTasks,
     setStatus,
     setEditMode,
+    setNewTaskMode,
     setEditableTask,
     setExecutor
 })(TasksContainer);

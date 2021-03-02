@@ -6,7 +6,7 @@ import React, {useState} from "react";
 const Info = ({task, users, setExecutor, statuses, setStatus}) => {
     let [editStatus, setEditStatusMode] = useState(false);
     let [editExecutor, setEditExecutorMode] = useState(false);
-
+    let {tags, price, resolutionDatePlan, createdAt, priorityName, ...data} = task;
     return (
         <div className={s.info}>
             <div className={s.status} onClick={editExecutor ? undefined : () => setEditStatusMode(true)}>
@@ -15,8 +15,8 @@ const Info = ({task, users, setExecutor, statuses, setStatus}) => {
             </div>
 
             {editStatus && <div className={s.statusEdit}>{statuses.map(status => <div onClick={() => {
-                setStatus(status.rgb, status.name, status.id);
                 setEditStatusMode(false);
+                setStatus(status.rgb, status.name, status.id, {...data, statusId: status.id});
             }} className={s.status} style={{margin: "30px 0 30px 20px"}} key={status.id}>
                 <div className={s.dot} style={{backgroundColor: status.rgb}}></div>
                 {status.name}</div>)}
@@ -40,14 +40,14 @@ const Info = ({task, users, setExecutor, statuses, setStatus}) => {
             </div>
             {editExecutor && <div className={s.executorEdit}>{users.map(user => <div onClick={() => {
                 setEditExecutorMode(false);
-                setExecutor(user.name, user.id)
+                setExecutor(user.name, user.id, {...data, executorId: user.id});
             }} className={s.executor} key={user.id}>{user.name}</div>)}</div>}
 
             <div className={s.flexCont}>
                 <span>Приоритет</span>
-               <div className={s.executor}>
-                   {task.priorityName}
-               </div>
+                <div>
+                    {task.priorityName}
+                </div>
             </div>
             <div className={s.flexCont}>
                 <span><img src={calendar} alt="calendar" height={15}/> Срок</span>

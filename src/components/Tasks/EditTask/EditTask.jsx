@@ -11,8 +11,8 @@ const EditTask = ({setStatus, statuses, setExecutor, setEditMode, users, task, s
     return (
         <div className={s.editTask} >
             <div className={s.editTaskHead}>
-                <div>{"№ " + task.id}</div>
-                <div>{task.name}</div>
+                <div style={{minWidth:"70px"}}>{"№ " + task.id}</div>
+                <div className={s.name}><span>{task.name}</span></div>
                 <div className={s.close} onClick={() => setEditMode()}><img src={close} alt="close" height={18}/></div>
             </div>
             <div className={s.editTaskCont}>
@@ -49,13 +49,10 @@ const EditTask = ({setStatus, statuses, setExecutor, setEditMode, users, task, s
                                 </Form>
                             )}
                         </Formik>
-                        <button onClick={()=> save(data)}>
-                            Сохранить
-                        </button>
                     </div>
                     {task.lifetimeItems.map(c => <Comment key={c.id} comment={c.comment} createdAt={c.createdAt} userName={c.userName}/>)}
                 </div>
-                <Info setStatus={setStatus} statuses={statuses} users={users} task={task} setExecutor={setExecutor}/>
+                <Info save={save} data={data} setStatus={setStatus} statuses={statuses} users={users} task={task} setExecutor={setExecutor}/>
             </div>
         </div>
     )

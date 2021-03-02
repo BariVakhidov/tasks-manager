@@ -7,15 +7,17 @@ const SET_PRIORITIES = "test-app/tasks/SET_PRIORITIES";
 const SET_EXECUTOR = "test-app/tasks/SET_EXECUTOR";
 const SET_STATUS = "test-app/tasks/SET_STATUS";
 const SET_EDIT_MODE = "test-app/tasks/SET_EDIT_MODE";
+const SET_NEW_TASK_MODE = "test-app/tasks/SET_NEW_TASK_MODE";
 const SET_EDITABLE_TASK = "test-app/tasks/SET_EDITABLE_TASK";
 
 export const setTasks = (tasks) => ({type: SET_TASKS, tasks});
 export const setStatuses = (statuses) => ({type: SET_STATUSES, statuses});
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setPriorities = (priorities) => ({type: SET_PRIORITIES, priorities});
-export const setExecutor = (executorName, executorId) => ({type: SET_EXECUTOR, executorName, executorId});
-export const setStatus = (rgb, name, statusId) => ({type: SET_STATUS, rgb, name, statusId});
+export const setExecutorAC = (executorName, executorId) => ({type: SET_EXECUTOR, executorName, executorId});
+export const setStatusAC = (rgb, name, statusId) => ({type: SET_STATUS, rgb, name, statusId});
 export const setEditMode = () => ({type: SET_EDIT_MODE});
+export const setNewTaskMode = () => ({type: SET_NEW_TASK_MODE});
 export const setEditableTask = (task) => ({type: SET_EDITABLE_TASK, task});
 
 let initialState = {
@@ -24,6 +26,7 @@ let initialState = {
         isEditModeActive: false,
         editableTask: null,
     },
+    newTaskMode: false,
     users: [],
     statuses: [],
     priorities: []
@@ -39,6 +42,11 @@ const tasksReducer = (state = initialState, action) => {
             return {
                 ...state,
                 editMode: {...state.editMode, isEditModeActive: !state.editMode.isEditModeActive}
+            }
+        case SET_NEW_TASK_MODE:
+            return {
+                ...state,
+                newTaskMode: !state.newTaskMode
             }
         case SET_EDITABLE_TASK:
             return {
@@ -123,6 +131,18 @@ export const createTask = (taskData) => async dispatch => {
     let data2 = await tasksAPI.getTask(data);
     dispatch(setEditableTask(data2));
 };
+
+export const setStatus = (rgb, name, statusId, data) => async dispatch => {
+    await tasksAPI.saveTaskEdit(data);
+    dispatch(setStatusAC(rgb, name, statusId));
+    await dispatch(requestTasks());
+
+}
+export const setExecutor = (executorName, executorId, data) => async dispatch => {
+    await tasksAPI.saveTaskEdit(data);
+    dispatch(setExecutorAC(executorName, executorId));
+    await dispatch(requestTasks());
+}
 export const save = (payload) => async dispatch => {
     await tasksAPI.saveTaskEdit(payload);
     await dispatch(requestTasks());
